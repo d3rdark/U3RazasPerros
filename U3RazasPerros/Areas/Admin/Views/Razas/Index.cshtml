@@ -1,0 +1,38 @@
+﻿@model IEnumerable<U3RazasPerros.Models.Razas>
+@inject Microsoft.AspNetCore.Hosting.IWebHostEnvironment env
+@{
+    ViewData["Title"] = "Index";
+    Layout = "_LayoutAdmin";
+}
+
+<section class="list">
+    <ul>
+        <li>
+            <a href="~/Admin/Razas/Agregar">
+                <h1>Nueva Raza...</h1>
+            </a>
+        </li>
+        @foreach (var raza in Model)
+        {
+            <li>
+                <a href="~/@(raza.Nombre.Replace(" ","-"))/Datos">
+                    @if (System.IO.File.Exists($"{env.WebRootPath }/imgs_perros/{raza.Id}_0.jpg"))
+                    {
+                        <img src="~/imgs_perros/@(raza.Id)_0.jpg" />
+                    }
+                    else
+                    {
+                        <img src="~/imgs_perros/NoPhoto.jpg" />
+                    }
+                    @raza.Nombre
+                </a>
+                <div>
+                    <a href="~/Admin/Razas/Eliminar/@raza.Id">Eliminar</a>
+                    <a href="~/Admin/Razas/Editar/@raza.Id">Edit</a>
+                </div>
+            </li>
+
+        }
+    </ul>
+    <br class="clear" />
+</section>
