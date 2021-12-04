@@ -35,6 +35,9 @@ namespace U3RazasPerros.Areas.Admin.Controllers
 
             return View(razas);
         }
+
+        #region Agregar
+
         [HttpGet]
         public IActionResult Agregar()
         {
@@ -138,6 +141,7 @@ namespace U3RazasPerros.Areas.Admin.Controllers
             return View(vm);
 
         }
+        #endregion
 
         #region Editar
         [HttpGet]
@@ -273,6 +277,7 @@ namespace U3RazasPerros.Areas.Admin.Controllers
         }
         #endregion
 
+        #region Eliminar
         [HttpGet]
         public IActionResult Eliminar(int id)
         {
@@ -310,5 +315,6 @@ namespace U3RazasPerros.Areas.Admin.Controllers
             }
             return View(r);
         }
+        #endregion
     }
 }
